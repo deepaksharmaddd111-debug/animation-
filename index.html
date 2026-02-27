@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Overlapping Animation Demo</title>
+  <style>
+    body {
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .character {
+      position: relative;
+      width: 120px;
+      height: 200px;
+    }
+
+    .body {
+      width: 60px;
+      height: 100px;
+      background: #4CAF50;
+      position: absolute;
+      left: 30px;
+      top: 60px;
+      border-radius: 10px;
+      animation: moveBody 2s infinite alternate ease-in-out;
+    }
+
+    .head {
+      width: 50px;
+      height: 50px;
+      background: #FFC107;
+      position: absolute;
+      left: 35px;
+      top: 10px;
+      border-radius: 50%;
+      animation: moveHead 2s infinite alternate ease-in-out;
+      animation-delay: 0.2s; /* Overlap */
+    }
+
+    .arm {
+      width: 20px;
+      height: 80px;
+      background: #2196F3;
+      position: absolute;
+      top: 70px;
+      border-radius: 10px;
+      transform-origin: top center;
+    }
+
+    .left-arm {
+      left: 0;
+      animation: swingArm 2s infinite alternate ease-in-out;
+      animation-delay: 0.3s; /* Overlap */
+    }
+
+    .right-arm {
+      right: 0;
+      animation: swingArm 2s infinite alternate ease-in-out;
+      animation-delay: 0.4s; /* More delay */
+    }
+
+    .hair {
+      width: 60px;
+      height: 20px;
+      background: #ff5722;
+      position: absolute;
+      left: 30px;
+      top: 0;
+      border-radius: 10px;
+      animation: moveHair 2s infinite alternate ease-in-out;
+      animation-delay: 0.5s; /* Last follower */
+    }
+
+    @keyframes moveBody {
+      from { transform: translateX(-40px); }
+      to { transform: translateX(40px); }
+    }
+
+    @keyframes moveHead {
+      from { transform: translateX(-35px); }
+      to { transform: translateX(35px); }
+    }
+
+    @keyframes swingArm {
+      from { transform: rotate(-30deg); }
+      to { transform: rotate(30deg); }
+    }
+
+    @keyframes moveHair {
+      from { transform: translateX(-30px); }
+      to { transform: translateX(30px); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="character">
+    <div class="hair"></div>
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="arm left-arm"></div>
+    <div class="arm right-arm"></div>
+  </div>
+
+</body>
+</html>
